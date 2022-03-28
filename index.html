@@ -1,0 +1,254 @@
+<!doctype html>
+
+<html>
+<head lang="ru-RU">
+    <meta charset="utf-8">
+
+    <title>Литература</title>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui-1.12.1.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.browser.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style-local.css">
+
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/main-local.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="debug" style="position: absolute; left: 5px; top: 5px; z-index: 50; height: 1em;"></div>
+
+<audio id="audioSuccess" preload="auto">
+    <source src="audio/success.mp3" type="audio/mpeg">
+    <!--<source src="audio/success.ogg" type="audio/ogg; codecs=vorbis">-->
+    <!--<source src="audio/success.wav" type="audio/wav">-->
+</audio>
+
+<audio id="audioFail" preload="auto">
+    <source src="audio/fail.mp3" type="audio/mpeg">
+    <!--<source src="audio/fail.ogg" type="audio/ogg; codecs=vorbis">-->
+    <!--<source src="audio/fail.wav" type="audio/wav">-->
+</audio>
+
+<div class="pop-mes fill" style="display: none;">
+    <div>
+        <p class="pop-mes-true" style="display: none;">Верно</p>
+        <p class="pop-mes-true-answer" style="display: none;">Правильный ответ</p>
+        <p class="pop-mes-false" style="display: none;">Неверно</p>
+        <p class="pop-mes-fatal" style="display: none;">Задание выполнено неверно.<br>Повторите § 14, с. 73</p>
+    </div>
+</div>
+
+<div id="contentContainer" class="content-container fill">
+    <div class="content fill">
+       <div class="task-header-block horizontal-stretch">
+             <div id = "header" class="tasks"><div id="tsk1" class="panel task font-default">1</div><div id="tsk2" class="panel task font-default">2</div><div id="tsk3" class="panel task font-default">3</div><div id="tsk4" class="panel task font-default">4</div></div>
+        </div>
+        <div id="page_1" class="page active" style="position: relative">
+            <div id="poem1" class="panel poem font-default"></div>
+            <div class="panel image poltav"><img id="plt" src="img/poltav.jpg"></div>
+            <div class="panel image moscow"><img id="msc" src="img/moscow.png"></div>
+            <div class="panel image kulik"><img id="klk" src="img/kulikov.png"></div>
+            <div class="panel image borod"><img id="brd" src="img/borodino.png"></div>
+            <div class="panel task1 font-default">Вопрос: Какому историческому событию посвящено стихотворение Николая Тихонова <br>«Растёт, шумит тот вихрь народной славы»?</div>
+            <div class="poemviewer hide font-default"></div>
+            <div id="anbtn1" class="panel answerbtn font-default hide">Ответ</div>
+            <div class="panel task1label font-default">Битва за Москву, 1941г.</div>
+            <div id="cbtn1" class="panel chebtn1 font-default hide">Выбрать</div>
+            <div class="ending">
+                <div class="panel helpimg"><img src="img/moscow_1.png"></div>
+                <div class="panel legend font-default"></div>
+                <div class="panel helpimg"><img src="img/moscow_2.png"></div>
+             </div>
+            <!--<div class="task-block horizontal-stretch">-->
+                <!--<div class="line-break vertical-stretch">-->
+                    <!--<p class="task-text" style="display: none;"></p>-->
+                <!--</div>-->
+                <!--<div class="vertical-stretch"><p class="task-plate">Задание</p></div>-->
+            <!--</div>-->
+            <!--<div class="workspace">-->
+			
+            <!--</div>-->
+            <!--<div class="help-container horizontal-stretch">-->
+                <!--<div class="js-layout-item vertical-stretch"><p class="help-plate">Подсказка</p></div>-->
+                <!--<div class="line-break vertical-stretch">-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+         <div id="page_2" class="page" style="position: relative">         
+             
+             <div class="header-label"><div class="panel task2 font-default"></div></div>
+             <div class="panel image art1"><img id="im01" src="img/poltav.jpg"></div>
+             <div class="panel label2 one font-default">Полтавская Битва, 1709г.</div>
+             <div id="c1" class="catcher one drop"></div>
+             <div class="panel image art2"><img id="im02" src="img/kulikov.png"></div>
+             <div class="panel label2 two font-default">Куликовская Битва, 1380г.</div>
+             <div id="c2" class="catcher two drop"></div> 
+             <div class="panel image art3"><img id="im03" src="img/borodino.png"></div>
+             <div class="panel label2 three font-default">Бородинское сражение, 1812г.</div>
+             <div id="c3" class="catcher three drop"></div>
+             <div class="vars1"></div>
+             <div class="text-bar"></div>
+             <div id="next1" class="panel answerbtn two font-default">Далее</div>
+             <div class="panel ending2 font-default"></div>
+             
+            <!--<div class="task-block horizontal-stretch">-->
+                <!--<div class="line-break vertical-stretch">-->
+                    <!--<p class="task-text" style="display: none;"></p>-->
+                <!--</div>-->
+                <!--<div class="vertical-stretch"><p class="task-plate">Задание</p></div>-->
+            <!--</div>-->
+            <!--<div class="workspace">-->
+				
+            <!--</div>-->
+            <!--<div class="help-container horizontal-stretch">-->
+                <!--<div class="js-layout-item vertical-stretch"><p class="help-plate">Подсказка</p></div>-->
+                <!--<div class="line-break vertical-stretch">-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div id="page_3" class="page" style="position: relative">
+            <div class="header-label"><div class="panel task3 font-default">Укажите автора и название стихотворения.</div></div>
+            <div id="poet1" class="panel image poet one"><img  src="img/3001.png"></div>
+            <div id="poet2" class="panel image poet two"><img  src="img/3002.png"></div>
+            <div id="poet3" class="panel image poet three"><img  src="img/3003.png"></div>
+            <div class="image harmon"><img id="harm" src="img/harmon.png"></div>  
+            <div id="anbtn3" class="panel answerbtn three  font-default">Ответ</div>
+            <div class="panel task1label one font-default">Михаил Васильевич Исаковский<br>В ЛЕСУ ПРИФРОНТОВОМ</div>
+            <div class="panel task1label two font-default">Алексей Александрович Сурков<br>В ЗЕМЛЯНКЕ</div>
+            <div class="panel task1label three font-default">Лев Иванович Ошанин<br>ЭХ, ДОРОГИ...</div>
+            <div  class="video one">
+                <video id="vi1" width="684" height="380" poster="img/harmon.png">
+                    <source src="video/woodfront.webm" type='video/webm; codecs="vp8, vorbis"'>
+                </video>
+            </div>
+             <div class="video two">
+                <video id="vi2" width="684" height="380" poster="img/harmon.png">
+                    <source src="video/zemlyanka.webm" type='video/webm; codecs="vp8, vorbis"'>
+                </video>
+            </div>
+            <div  class="video three">
+                <video id="vi3" width="684" height="380" poster="img/harmon.png">
+                    <source src="video/ohroads.webm" type='video/webm; codecs="vp8, vorbis"'>
+                </video>
+            </div>
+        </div>
+        
+       <div id="page_4" class="page" style="position: relative">
+           <div class="header-label"><div class="panel task4 font-default">Прослушайте стихотворение и ответьте на вопросы.</div></div>
+           <div  class="video four">
+                <video id="vi4" width="864" height="480" poster="img/harmon.png" controls="controls">
+                    <source src="video/alesha.webm" type='video/webm; codecs="vp8, vorbis"'>
+                </video>
+            </div>
+           <div id="btn4" class="panel btn1 one font-default">Начать</div>
+           <div id="qst-viewer" class="panel quest-viewer font-default hide"></div>
+           <div class="task4-container hide">
+               <div class="results-bar">
+                   <div class="panel results-label font-default">Результаты работы с текстом стихотворения.</div>
+                   <div class="results-container font-default"></div>
+               </div>
+               <div class="qv-container">
+                   <div class="quest-container">
+                        <div class="quest-label font-default">Вопрос:</div>
+                        <div class="panel quest font-default"></div>
+                   </div>   
+                   <div class="variants-bar">
+                        <div class="variants-label font-default">Варианты ответов:</div>
+                        <div class="vars font-default"></div>
+                    </div>
+                    <div class="result-bar">
+                        <div class="result-text"></div>
+                        <div id="btn5" class="panel result-btn font-default">Проверить</div>
+                    </div>                   
+                </div>
+            </div>       
+            
+              
+       </div>
+
+        <div id="page_success" class="page" style="position: relative">
+            <div class="center-parent fill">
+                <div class="center-child fill">
+                    <p class="result-success-text">Поздравляем!<br>Задание выполнено правильно!</p>
+                    <br><br><br><br><br><br>
+                    <button id="successBtn" class="success-btn">ПРОДОЛЖИТЬ</button>
+                </div>
+            </div>
+        </div>
+        <div id="page_fail" class="page" style="position: relative">
+            <div class="center-parent fill">
+                <div class="center-child fill">
+                    <p class="result-fail-text">
+                        К сожалению, задание выполнено неправильно!
+                        <br>
+                        Попробуйте выполнить его ещё раз!
+                    </p>
+                    <br><br><br><br><br><br>
+                    <button id="failBtn" class="fail-btn">ПОВТОРИТЬ</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="page_full_success" class="page" style="position: relative">
+            <div class="center-parent fill">
+                <div class="center-child fill">
+                    <p class="result-success-text">
+                        Поздравляем!<br>Вы полностью справились с заданиями!
+                        <br><br><br><br><br><br><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="warningDialog">
+    <div class="modal-dialog">
+        <div class="modal-content dialog">
+            <p style="margin-top: 10px">Задание недоделано!</p>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="successDialog">
+    <div class="modal-dialog">
+        <div class="modal-content dialog" style="text-align: center; width: 100%">
+            <p style="text-align: center"><b>Поздравляем!</b></p>
+            <p style="text-align: center">Задание выполнено правильно</p>
+            <a class="btn" href="index.html">Вернуться в начало</a>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="errorDialog">
+    <div class="modal-dialog">
+        <div class="modal-content dialog" style="text-align: center; width: 100%">
+            <p style="text-align: center">Задание выполнено неправильно!</p>
+            <a class="btn" href="index.html">Начать заново</a>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="helpDialog">
+    <div class="modal-dialog">
+        <div class="modal-content dialog">
+            <p class="help-dlg-header">Подсказка<span class="close-btn-cross"></span></p>
+            <div class="help-dlg-body">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+</html>
